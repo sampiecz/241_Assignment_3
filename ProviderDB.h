@@ -38,6 +38,12 @@ class ProviderDB
 
         //Sorthing method
         void sortByName();
+
+        //Process Transactions
+        void processTransactions(char* const transactionFile);
+
+        //Search For Provider Number
+        int searchForProviderNumber(char searchNumber);
 };
 
 #endif

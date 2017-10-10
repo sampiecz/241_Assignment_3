@@ -9,11 +9,11 @@
 CCFLAGS = -Wall -std=c++11 -ggdb
 
 # Rule to link object code files to create executable file
-assign2: assign2.o Provider.o ProviderDB.o
-	g++ $(CCFLAGS) -o assign2 assign2.o Provider.o ProviderDB.o
+assign3: assign3o Provider.o ProviderDB.o
+	g++ $(CCFLAGS) -o assign3 assign3.o Provider.o ProviderDB.o
 
 # Rules to compile source code file to object code
-assign2.o: assign2.cpp ProviderDB.h
+assign3.o: assign3.cpp ProviderDB.h
 	g++ $(CCFLAGS) -c assign2.cpp
 
 Provider.o: Provider.cpp Provider.h
@@ -27,4 +27,4 @@ ProviderDB.h: Provider.h
 
 # Pseudo-target to remove object code and executable files
 clean:
-	-rm *.o assign2
+	-rm *.o assign3

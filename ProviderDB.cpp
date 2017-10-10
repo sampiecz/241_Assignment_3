@@ -158,3 +158,76 @@ void ProviderDB::sortByName()
         providerArray[j] = bucket;
     }
 }
+
+/***************************************************************
+ processTransactions
+ 
+ Use: Loops through ProviderDB array and prints each instance
+ that is contained in the array.
+ 
+ Parameters: No parameters.
+ ***************************************************************/
+void ProviderDB::processTransactions(const char* transactionFile)
+{
+    string typeOfTransaction;
+    string all;
+    string specialty; 
+
+    ifstream theFile;
+
+    theFile.open(transactionFile);       
+
+    if (!theFile)
+        cerr << "File does not exist." << endl;;
+        exit(1);
+    
+    while (theFile >> typeOfTransaction)
+    {
+       if (typeOfTransaction == all)
+       {
+           providers.print()
+       }
+       else if (typeOfTransaction == specialty)
+       {
+           providers.sortBySpecialty()
+           providers.print() 
+       }
+       else if (typeOfTransaction == number)
+       {
+           providers.sortByProviderNumber()
+           providers.print()
+       }
+    }
+
+    theFile.close()
+}
+
+/***************************************************************
+ searchForProviderNumber
+ 
+ Use: Loops through ProviderDB array and prints each instance
+ that is contained in the array.
+ 
+ Parameters: No parameters.
+ ***************************************************************/
+int ProviderDB::searchForProviderNumber(char searchNumber)
+{
+    int low = 0;
+    int high = number of valid Provider objects in the array - 1;
+    int mid;
+
+    while (low <= high)
+        {
+            mid = (low + high) / 2;
+
+            if (searchNumber is equal to providerNumber data member of providerArray[mid])
+                return mid;
+
+            if (searchNumber is less than providerNumber data member of providerArray[mid])
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+
+    return -1;
+}

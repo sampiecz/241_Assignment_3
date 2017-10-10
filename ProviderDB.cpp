@@ -190,6 +190,11 @@ void ProviderDB::processTransactions(const char* transactionFile)
     {
        if (typeOfTransaction == "all")
        {
+           cout << "#################################################" << endl;
+           cout << "#                 All Providers                 #" << endl;
+           cout << "#################################################" << endl;
+           
+           sortByName();
            print();
        }
        else if (typeOfTransaction == "specialty")
@@ -197,6 +202,10 @@ void ProviderDB::processTransactions(const char* transactionFile)
            tranFile >> ws;
            getline(tranFile, specialty);
            sortBySpecialty();
+          
+           cout << "#################################################" << endl;
+           cout << "#               Provider Specialty              #" << endl;
+           cout << "#################################################" << endl;
            print(); 
        }
        else if (typeOfTransaction == "number")
@@ -211,6 +220,10 @@ void ProviderDB::processTransactions(const char* transactionFile)
            {
                cerr << "Number does not exist." << endl;
            }
+          
+           cout << "#################################################" << endl;
+           cout << "#               Provider Number                 #" << endl;
+           cout << "#################################################" << endl;
            print();
        }
     }
@@ -238,12 +251,17 @@ int ProviderDB::searchForProviderNumber(const char* number)
             mid = (low + high) / 2;
 
             if (strcmp(providerArray[mid].getProviderNumber(), number) == 0)
+            {    
                 return mid;
-
+            }
             if (strcmp(providerArray[mid].getProviderNumber(), number) < 0)
+            {
                 high = mid - 1;
+            }
             else
+            {
                 low = mid + 1;
+            }
         }
 
     return -1;

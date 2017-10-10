@@ -181,19 +181,26 @@ void ProviderDB::processTransactions(const char* transactionFile)
     tranFile.open(transactionFile);       
 
     if (!tranFile)
+    {    
         cerr << "File does not exist." << endl;
         exit(1);
-    
+    }
+
     while (tranFile >> typeOfTransaction)
     {
        if (typeOfTransaction == "all")
+       {
            print();
+       }
        else if (typeOfTransaction == "specialty")
+       {
            tranFile >> ws;
            getline(tranFile, specialty);
            sortBySpecialty();
            print(); 
+       }
        else if (typeOfTransaction == "number")
+       {
            tranFile >> ws;
            tranFile >> number;
            number.c_str();
@@ -201,8 +208,11 @@ void ProviderDB::processTransactions(const char* transactionFile)
            searchForProviderNumber(number.c_str());
 
            if (searchForProviderNumber(number.c_str()) == -1)
+           {
                cerr << "Number does not exist." << endl;
+           }
            print();
+       }
     }
 
     tranFile.close();

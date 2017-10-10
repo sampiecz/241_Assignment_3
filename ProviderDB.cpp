@@ -205,23 +205,23 @@ void ProviderDB::processTransactions(const char* transactionFile)
            
            int counter;
 
+           cout << "#################################################" << endl;
+           cout << "#               Provider Specialty              #" << endl;
+           cout << "#################################################" << endl;
+
            for (int i = 0; i < numberOfProviders; i++)
            {
                
                if (providerArray[i].getProviderSpecialty() == specialty)
                {
                    providerArray[i].print(); 
-                   count++;
+                   counter++;
                }
            
            }
  
            cout << "This many provider specialty objects were printed out: " << counter << endl;
 
-           cout << "#################################################" << endl;
-           cout << "#               Provider Specialty              #" << endl;
-           cout << "#################################################" << endl;
-           print(); 
        }
        else if (typeOfTransaction == "number")
        {

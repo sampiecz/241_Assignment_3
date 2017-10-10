@@ -20,11 +20,15 @@ using std::endl;
 
 int main()
 {
-
-    // Instantiates an object of the Providerdb class, loads the providerdb
+   // Loads providerDB object with data from file
     ProviderDB loadData("providerdb");
 
-    // Pass transactions file to processTransactions method
+    loadData.sortByName();
+    loadData.print();
+    cout << "################################################################" << endl;
+    loadData.sortByProviderNumber();
+    loadData.print();
+    cout << "################################################################" << endl;
     loadData.processTransactions("transactions.txt");
-
+    return 0;
 }

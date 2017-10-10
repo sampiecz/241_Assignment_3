@@ -229,9 +229,8 @@ void ProviderDB::processTransactions(const char* transactionFile)
        {
            tranFile >> ws;
            tranFile >> number;
-           number.c_str();
            sortByProviderNumber();
-           searchForProviderNumber(number.c_str());
+           int mid = searchForProviderNumber(number.c_str());
 
            cout << "#################################################" << endl;
            cout << "#               Provider Number                 #" << endl;
@@ -241,9 +240,12 @@ void ProviderDB::processTransactions(const char* transactionFile)
            {
                cerr << "Number does not exist." << endl;
            }
-          
-           print();
-       }
+           else
+           {
+               providerArray[mid].print();        
+           }
+    
+        }
     }
 
     tranFile.close();
@@ -271,7 +273,7 @@ int ProviderDB::searchForProviderNumber(const char* number)
             {    
                 return mid;
             }
-            if (strcmp(providerArray[mid].getProviderNumber(), number) < 0)
+            else if (strcmp(providerArray[mid].getProviderNumber(), number) > 0)
             {
                 high = mid - 1;
             }
@@ -279,6 +281,7 @@ int ProviderDB::searchForProviderNumber(const char* number)
             {
                 low = mid + 1;
             }
+
         }
 
     return -1;

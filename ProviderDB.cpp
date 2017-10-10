@@ -203,7 +203,7 @@ void ProviderDB::processTransactions(const char* transactionFile)
            getline(tranFile, specialty);
            sortBySpecialty();
            
-           int counter;
+           int counter = 0;
 
            cout << "#################################################" << endl;
            cout << "#               Provider Specialty              #" << endl;

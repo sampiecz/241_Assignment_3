@@ -202,7 +202,19 @@ void ProviderDB::processTransactions(const char* transactionFile)
            tranFile >> ws;
            getline(tranFile, specialty);
            sortBySpecialty();
-          
+           
+           for (int i = 0; i < numOfProviders; i++)
+           {
+               if (providerArray[i].getProviderSpecialty == specialty)
+               {
+                   cout << providerArray[i] << endl;
+               }
+               else
+               {
+                   cout << i << endl;
+               }
+           }
+ 
            cout << "#################################################" << endl;
            cout << "#               Provider Specialty              #" << endl;
            cout << "#################################################" << endl;

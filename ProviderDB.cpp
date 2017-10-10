@@ -203,18 +203,21 @@ void ProviderDB::processTransactions(const char* transactionFile)
            getline(tranFile, specialty);
            sortBySpecialty();
            
+           int counter;
+
            for (int i = 0; i < numberOfProviders; i++)
            {
+               
                if (providerArray[i].getProviderSpecialty() == specialty)
                {
                    providerArray[i].print(); 
+                   count++;
                }
-               else
-               {
-                   cout << "This is a count of the number of providers with that specialty: " << i << endl;
-               }
+           
            }
  
+           cout << "This many provider specialty objects were printed out: " << counter << endl;
+
            cout << "#################################################" << endl;
            cout << "#               Provider Specialty              #" << endl;
            cout << "#################################################" << endl;

@@ -22,13 +22,8 @@ int main()
 {
    // Loads providerDB object with data from file
     ProviderDB loadData("providerdb");
-
-    loadData.sortByName();
-    loadData.print();
-    cout << "################################################################" << endl;
-    loadData.sortByProviderNumber();
-    loadData.print();
-    cout << "################################################################" << endl;
+   
     loadData.processTransactions("transactions.txt");
+    loadData.searchForProviderNumber(number); 
     return 0;
 }

@@ -15,9 +15,12 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
 #include "ProviderDB.h"
 #include "Provider.h"
 
+using std::ws;
+using std::string;
 using std::cout;
 using std::cerr;
 using std::endl;
@@ -170,36 +173,47 @@ void ProviderDB::sortByName()
 void ProviderDB::processTransactions(const char* transactionFile)
 {
     string typeOfTransaction;
-    string all;
     string specialty; 
+    string number;
 
-    ifstream theFile;
+    ifstream tranFile;
 
-    theFile.open(transactionFile);       
+    tranFile.open(transactionFile);       
 
-    if (!theFile)
+    if (!tranFile)
         cerr << "File does not exist." << endl;;
         exit(1);
     
-    while (theFile >> typeOfTransaction)
+    while (tranFile >> typeOfTransaction)
     {
-       if (typeOfTransaction == all)
+       if (typeOfTransaction == "all")
        {
-           providers.print()
+           print();
        }
-       else if (typeOfTransaction == specialty)
+       else if (typeOfTransaction == "specialty")
        {
-           providers.sortBySpecialty()
-           providers.print() 
+           tranFile >> ws;
+           getline(tranFile, specialty);
+           sortBySpecialty();
+           print(); 
        }
-       else if (typeOfTransaction == number)
+       else if (typeOfTransaction == "number")
        {
-           providers.sortByProviderNumber()
-           providers.print()
+           tranFile >> ws;
+           tranFile >> number;
+           number.c_str();
+           sortByProviderNumber();
+           searchForProviderNumber(number.c_str());
+
+           if (searchForProviderNumber(number.c_str()) == -1)
+           {
+               cerr << "Number does not exist." << endl;
+           }
+           print();
        }
     }
 
-    theFile.close()
+    tranFile.close();
 }
 
 /***************************************************************
@@ -210,20 +224,21 @@ void ProviderDB::processTransactions(const char* transactionFile)
  
  Parameters: No parameters.
  ***************************************************************/
-int ProviderDB::searchForProviderNumber(char searchNumber)
+int ProviderDB::searchForProviderNumber(const char* number)
 {
+    int amountOfProviders = 0;
     int low = 0;
-    int high = number of valid Provider objects in the array - 1;
+    int high = amountOfProviders - 1;
     int mid;
 
     while (low <= high)
         {
             mid = (low + high) / 2;
 
-            if (searchNumber is equal to providerNumber data member of providerArray[mid])
+            if (strcmp(providerArray[mid].getProviderNumber(), number) == 0)
                 return mid;
 
-            if (searchNumber is less than providerNumber data member of providerArray[mid])
+            if (strcmp(providerArray[mid].getProviderNumber(), number) < 0)
                 high = mid - 1;
             else
                 low = mid + 1;

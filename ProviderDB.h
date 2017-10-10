@@ -40,10 +40,10 @@ class ProviderDB
         void sortByName();
 
         //Process Transactions
-        void processTransactions(char* const transactionFile);
+        void processTransactions(const char* transactionFile);
 
         //Search For Provider Number
-        int searchForProviderNumber(char searchNumber);
+        int searchForProviderNumber(const char* number);
 };
 
 #endif

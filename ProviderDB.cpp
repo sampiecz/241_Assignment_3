@@ -205,7 +205,7 @@ void ProviderDB::processTransactions(const char* transactionFile)
            
            for (int i = 0; i < numberOfProviders; i++)
            {
-               if (providerArray[i].getProviderSpecialty == specialty)
+               if (providerArray[i].getProviderSpecialty() == specialty)
                {
                    cout << providerArray[i] << endl;
                }

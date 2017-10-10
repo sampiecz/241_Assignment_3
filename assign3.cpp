@@ -24,6 +24,6 @@ int main()
     ProviderDB loadData("providerdb");
    
     loadData.processTransactions("transactions.txt");
-    loadData.searchForProviderNumber(number); 
+    
     return 0;
 }

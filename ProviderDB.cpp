@@ -220,9 +220,9 @@ void ProviderDB::processTransactions(const char* transactionFile)
            
            }
 
-           cout << "\n=================================================" << endl;
+           cout << "=================================================" << endl;
            cout << "Amount of Providers objects printed out: " << counter << endl;
-           cout << "=================================================\n" << endl;
+           cout << "=================================================\n\n" << endl;
 
        }
        else if (typeOfTransaction == "number")
@@ -238,7 +238,7 @@ void ProviderDB::processTransactions(const char* transactionFile)
 
            if (searchForProviderNumber(number.c_str()) == -1)
            {
-               cerr << "Number does not exist." << endl;
+               cerr << "\nNumber does not exist.\n" << endl;
            }
            else
            {

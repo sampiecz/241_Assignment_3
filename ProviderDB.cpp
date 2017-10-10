@@ -219,8 +219,10 @@ void ProviderDB::processTransactions(const char* transactionFile)
                }
            
            }
- 
-           cout << "This many provider specialty objects were printed out: " << counter << endl;
+
+           cout << "\n=================================================" << endl;
+           cout << "Amount of Providers objects printed out: " << counter << endl;
+           cout << "=================================================\n" << endl;
 
        }
        else if (typeOfTransaction == "number")
@@ -231,14 +233,15 @@ void ProviderDB::processTransactions(const char* transactionFile)
            sortByProviderNumber();
            searchForProviderNumber(number.c_str());
 
+           cout << "#################################################" << endl;
+           cout << "#               Provider Number                 #" << endl;
+           cout << "#################################################" << endl;
+
            if (searchForProviderNumber(number.c_str()) == -1)
            {
                cerr << "Number does not exist." << endl;
            }
           
-           cout << "#################################################" << endl;
-           cout << "#               Provider Number                 #" << endl;
-           cout << "#################################################" << endl;
            print();
        }
     }
@@ -256,9 +259,8 @@ void ProviderDB::processTransactions(const char* transactionFile)
  ***************************************************************/
 int ProviderDB::searchForProviderNumber(const char* number)
 {
-    int amountOfProviders = 0;
     int low = 0;
-    int high = amountOfProviders - 1;
+    int high = numberOfProviders - 1;
     int mid;
 
     while (low <= high)
